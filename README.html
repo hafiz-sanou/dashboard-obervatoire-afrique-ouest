@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="SANOU Bakaye Boubacar Hafiz">
+<meta name="author" content="SECK Ndeye Fama">
+<meta name="author" content="BOUH Fall">
+<meta name="dcterms.date" content="2026-03-15">
+
+<title>Observatoire Socio-Économique de l’Afrique de l’Ouest (OSEAO)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="README_files/libs/clipboard/clipboard.min.js"></script>
+<script src="README_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="README_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="README_files/libs/quarto-html/popper.min.js"></script>
+<script src="README_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="README_files/libs/quarto-html/anchor.min.js"></script>
+<link href="README_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="README_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="README_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="README_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="README_files/libs/bootstrap/bootstrap-813c323200a87c37e262811031999de4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">1. Introduction</a></li>
+  <li><a href="#problématique" id="toc-problématique" class="nav-link" data-scroll-target="#problématique">2. Problématique</a></li>
+  <li><a href="#gestion-et-intelligence-des-données" id="toc-gestion-et-intelligence-des-données" class="nav-link" data-scroll-target="#gestion-et-intelligence-des-données">3. Gestion et Intelligence des Données</a>
+  <ul class="collapse">
+  <li><a href="#origine-et-périmètre" id="toc-origine-et-périmètre" class="nav-link" data-scroll-target="#origine-et-périmètre">3.1 Origine et Périmètre</a></li>
+  <li><a href="#la-problématique-des-données-manquantes" id="toc-la-problématique-des-données-manquantes" class="nav-link" data-scroll-target="#la-problématique-des-données-manquantes">3.2 La Problématique des Données Manquantes</a></li>
+  <li><a href="#stratégie-dimputation-une-approche-statistique" id="toc-stratégie-dimputation-une-approche-statistique" class="nav-link" data-scroll-target="#stratégie-dimputation-une-approche-statistique">3.3 Stratégie d’Imputation : Une Approche Statistique</a></li>
+  <li><a href="#pertinence-de-la-méthode" id="toc-pertinence-de-la-méthode" class="nav-link" data-scroll-target="#pertinence-de-la-méthode">3.4 Pertinence de la Méthode</a></li>
+  <li><a href="#création-de-lindice-composite-oseao" id="toc-création-de-lindice-composite-oseao" class="nav-link" data-scroll-target="#création-de-lindice-composite-oseao">3.5 Création de l’Indice Composite OSEAO</a></li>
+  </ul></li>
+  <li><a href="#descriptif-de-lapplication" id="toc-descriptif-de-lapplication" class="nav-link" data-scroll-target="#descriptif-de-lapplication">4. Descriptif de l’Application</a>
+  <ul class="collapse">
+  <li><a href="#a.-vue-densemble-carte-overview" id="toc-a.-vue-densemble-carte-overview" class="nav-link" data-scroll-target="#a.-vue-densemble-carte-overview">A. Vue d’Ensemble &amp; Carte (Overview)</a></li>
+  <li><a href="#b.-démographie-demo" id="toc-b.-démographie-demo" class="nav-link" data-scroll-target="#b.-démographie-demo">B. Démographie (Demo)</a></li>
+  <li><a href="#c.-économie-marchés" id="toc-c.-économie-marchés" class="nav-link" data-scroll-target="#c.-économie-marchés">C. Économie &amp; Marchés</a></li>
+  <li><a href="#d.-développement-social-social-development" id="toc-d.-développement-social-social-development" class="nav-link" data-scroll-target="#d.-développement-social-social-development">D. Développement Social (Social Development)</a></li>
+  <li><a href="#e.-santé-pauvreté-health-poverty" id="toc-e.-santé-pauvreté-health-poverty" class="nav-link" data-scroll-target="#e.-santé-pauvreté-health-poverty">E. Santé &amp; Pauvreté (Health &amp; Poverty)</a></li>
+  <li><a href="#f.-indice-composite-oseao-synthetical-analysis" id="toc-f.-indice-composite-oseao-synthetical-analysis" class="nav-link" data-scroll-target="#f.-indice-composite-oseao-synthetical-analysis">F. Indice Composite OSEAO (Synthetical Analysis)</a></li>
+  <li><a href="#g.-prédictions-machine-learning-forecasting" id="toc-g.-prédictions-machine-learning-forecasting" class="nav-link" data-scroll-target="#g.-prédictions-machine-learning-forecasting">G. Prédictions &amp; Machine Learning (Forecasting)</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#enseignements-clés-du-projet" id="toc-enseignements-clés-du-projet" class="nav-link" data-scroll-target="#enseignements-clés-du-projet">Enseignements Clés du Projet</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Observatoire Socio-Économique de l’Afrique de l’Ouest (OSEAO)</h1>
+<p class="subtitle lead">Projet Visualisation de Données - M1 MAS (Science des Données et IA)</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-contents">
+             <p>SANOU Bakaye Boubacar Hafiz </p>
+             <p>SECK Ndeye Fama </p>
+             <p>BOUH Fall </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 15, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">1. Introduction</h2>
+<p>Comprendre l’évolution d’une région aussi dynamique que l’Afrique de l’Ouest nécessite bien plus que de simples tableaux de chiffres. C’est pour répondre à ce besoin de clarté que nous avons conçu l’<strong>Observatoire Socio-Économique de l’Afrique de l’Ouest (OSEAO)</strong>.</p>
+<p>Développée dans le cadre de notre Master 1 Mathématiques Appliquées et Statistiques (MAS) à l’Université de Rennes 2, cette application <strong>R Shiny</strong> ne se contente pas d’afficher des données. Elle transforme des indicateurs complexes (économie, santé, démographie) en outils visuels interactifs et en prévisions concrètes pour l’horizon 2030.</p>
+<p>Notre objectif est d’offrir une plateforme où la donnée devient lisible, permettant ainsi de comparer les performances des pays, de détecter des tendances invisibles à l’œil nu et d’anticiper les défis de demain grâce aux outils du Machine Learning.</p>
+<p><strong>Lien vers l’application :</strong> <a href="https://hafiz-sanou.shinyapps.io/projet_dashboard_rshiny/">Dashboard OSEAO en ligne</a></p>
+</section>
+<section id="problématique" class="level2">
+<h2 class="anchored" data-anchor-id="problématique">2. Problématique</h2>
+<p>L’Afrique de l’Ouest est aujourd’hui à un tournant de son histoire. Entre une croissance démographique galopante et des économies en pleine transformation, la région fait face à des défis majeurs. Cependant, derrière les chiffres globaux se cachent des réalités très différentes d’un pays à l’autre.</p>
+<p>La question centrale de notre projet est la suivante : <strong>Comment comprendre les écarts de développement entre les pays d’Afrique de l’Ouest et à quoi ressemblera leur visage socio-économique en 2030 ?</strong></p>
+<p>Pour répondre à cette question, notre outil s’attaque à trois obstacles principaux :</p>
+<ol type="1">
+<li><strong>La fragmentation des données :</strong> Comment comparer efficacement des pays aux profils si variés (PIB, santé, éducation) sur une seule et même plateforme ?</li>
+<li><strong>La visibilité des inégalités :</strong> Comment mettre en lumière les disparités régionales pour identifier les zones qui progressent et celles qui stagnent ?</li>
+<li><strong>L’anticipation du futur :</strong> Au-delà du simple constat actuel, comment utiliser les données historiques pour prévoir les trajectoires de demain ?</li>
+</ol>
+<p>L’enjeu de l’application <strong>OSEAO</strong> est donc de transformer des bases de données souvent arides en une narration visuelle claire. Il s’agit de donner aux utilisateurs les clés pour comprendre non seulement “où en est” l’Afrique de l’Ouest, mais surtout “où elle va”.</p>
+</section>
+<section id="gestion-et-intelligence-des-données" class="level2">
+<h2 class="anchored" data-anchor-id="gestion-et-intelligence-des-données">3. Gestion et Intelligence des Données</h2>
+<p>La qualité d’un tableau de bord dépend avant tout de la fiabilité de ses données. Pour ce projet, nous avons mis en place un pipeline de données automatisé et une stratégie d’imputation rigoureuse.</p>
+<section id="origine-et-périmètre" class="level3">
+<h3 class="anchored" data-anchor-id="origine-et-périmètre">3.1 Origine et Périmètre</h3>
+<p>Les données proviennent de la <strong>Banque Mondiale</strong>, extraites via l’API <strong>WDI (World Development Indicators)</strong>. Notre étude couvre les <strong>15 pays de l’Afrique de l’Ouest</strong> (Sénégal, Côte d’Ivoire, Nigeria, Burkina Faso, etc.) sur une période allant de <strong>2014 à 2024</strong>.</p>
+<p>Nous avons sélectionné <strong>22 indicateurs clés</strong> structurés en 6 dimensions :</p>
+<ul>
+<li><p><strong>Démographie :</strong> Population, croissance, espérance de vie, taux de fertilité.</p></li>
+<li><p><strong>Économie :</strong> PIB, PIB par habitant, inflation (calculée à partir de l’IPC), chômage.</p></li>
+<li><p><strong>Social &amp; Digital :</strong> Accès à l’électricité, utilisateurs d’internet et du mobile.</p></li>
+<li><p><strong>Éducation :</strong> Taux d’alphabétisation, scolarisation secondaire (hommes vs femmes).</p></li>
+<li><p><strong>Santé :</strong> Mortalité infantile et maternelle.</p></li>
+<li><p><strong>Inégalités :</strong> Indice de Gini et taux de pauvreté.</p></li>
+</ul>
+</section>
+<section id="la-problématique-des-données-manquantes" class="level3">
+<h3 class="anchored" data-anchor-id="la-problématique-des-données-manquantes">3.2 La Problématique des Données Manquantes</h3>
+<p>En économie du développement, les séries temporelles sont souvent incomplètes (données non collectées certaines années ou retards de publication). Travailler avec des données “trouées” pose deux problèmes majeurs :</p>
+<ol type="1">
+<li><p><strong>Biais statistique :</strong> Les calculs de moyennes ou de corrélations deviennent faux si des années clés manquent.</p></li>
+<li><p><strong>Incompatibilité Algorithmique :</strong> Les modèles de Machine Learning (comme la régression ou les K-Means) ne peuvent pas traiter des valeurs <code>NA</code> (non disponibles).</p></li>
+</ol>
+</section>
+<section id="stratégie-dimputation-une-approche-statistique" class="level3">
+<h3 class="anchored" data-anchor-id="stratégie-dimputation-une-approche-statistique">3.3 Stratégie d’Imputation : Une Approche Statistique</h3>
+<p>Pour garantir la continuité des analyses sans dénaturer la réalité économique, nous avons développé une fonction d’imputation intelligente (<code>impute_data</code>) utilisant le paquet <code>zoo</code> :</p>
+<ol type="1">
+<li><strong>Interpolation Linéaire (<code>na.approx</code>) :</strong> Pour les valeurs manquantes situées entre deux années connues, nous estimons que l’évolution a été constante. C’est la méthode la plus fidèle pour des indicateurs à évolution lente (comme l’espérance de vie).</li>
+<li><strong>Extrapolation LOCF (<em>Last Observation Carried Forward</em>) :</strong> Pour les années les plus récentes (2023-2024) où les données ne sont pas encore publiées, nous prolongeons la dernière valeur connue. Cela permet de maintenir une base de comparaison stable.</li>
+<li><strong>Back-filling (<code>fromLast = TRUE</code>) :</strong> Nous appliquons la même logique pour les années de début de période si nécessaire.</li>
+<li><strong>Calcul de Variables Dérivées :</strong> Nous avons enrichi le dataset en calculant nous-mêmes l’<strong>Inflation</strong> (taux de variation de l’IPC) et l’<strong>Écart d’éducation (Gender Gap)</strong> pour offrir des insights plus profonds que les données brutes.</li>
+</ol>
+</section>
+<section id="pertinence-de-la-méthode" class="level3">
+<h3 class="anchored" data-anchor-id="pertinence-de-la-méthode">3.4 Pertinence de la Méthode</h3>
+<p>Cette approche est particulièrement robuste car elle préserve la <strong>tendance propre à chaque pays</strong>. Contrairement à une imputation par la moyenne globale (qui écraserait les spécificités nationales), notre méthode respecte l’historique de chaque nation, ce qui est indispensable pour des prévisions fiables à l’horizon 2030.</p>
+</section>
+<section id="création-de-lindice-composite-oseao" class="level3">
+<h3 class="anchored" data-anchor-id="création-de-lindice-composite-oseao">3.5 Création de l’Indice Composite OSEAO</h3>
+<p>Au-delà des indicateurs individuels, nous avons conçu une variable synthétique : <strong>l’Indice Composite OSEAO</strong>.</p>
+<ul>
+<li><strong>Pourquoi ?</strong> Un pays peut avoir un PIB élevé mais une faible espérance de vie. L’indice permet de réconcilier ces dimensions pour offrir un score unique de performance socio-économique.</li>
+<li><strong>Composition :</strong> Il agrège les dimensions critiques (Économie, Santé, Éducation, Accès aux services) pour classer les pays de manière multidimensionnelle.</li>
+<li><strong>Transformation :</strong> Toutes les variables ont été normalisées pour être mises sur une échelle commune (0 à 100), permettant ainsi de voir instantanément qui sont les leaders régionaux.</li>
+</ul>
+</section>
+</section>
+<section id="descriptif-de-lapplication" class="level2">
+<h2 class="anchored" data-anchor-id="descriptif-de-lapplication">4. Descriptif de l’Application</h2>
+<p>L’interface de l’<strong>OSEAO</strong> est organisée en modules spécialisés. Chaque page a été conçue pour répondre à un angle spécifique de l’analyse socio-économique.</p>
+<section id="a.-vue-densemble-carte-overview" class="level3">
+<h3 class="anchored" data-anchor-id="a.-vue-densemble-carte-overview">A. Vue d’Ensemble &amp; Carte (Overview)</h3>
+<p>Cette page constitue le cockpit de pilotage de l’application. Elle permet d’avoir une vision instantanée de la santé de la région ou d’un pays spécifique.</p>
+<section id="les-indicateurs-clés-kpis" class="level4">
+<h4 class="anchored" data-anchor-id="les-indicateurs-clés-kpis">Les Indicateurs Clés (KPIs)</h4>
+<p>En haut de page, quatre boîtes de valeur (<strong>ValueBoxes</strong>) résument la situation de la sélection actuelle :</p>
+<ul>
+<li><p><strong>Population Totale :</strong> Somme des habitants en millions.</p></li>
+<li><p><strong>Croissance PIB Moyenne :</strong> Moyenne de la dynamique économique (%).</p></li>
+<li><p><strong>Espérance de Vie :</strong> Un indicateur synthétique de la qualité du système de santé.</p></li>
+<li><p><strong>Tendance Comparative :</strong> Un indicateur intelligent qui compare la donnée actuelle à celle de l’année précédente (affichage dynamique vert/rouge selon l’évolution).</p></li>
+</ul>
+</section>
+<section id="cartographie-interactive-leaflet" class="level4">
+<h4 class="anchored" data-anchor-id="cartographie-interactive-leaflet">Cartographie Interactive (<code>leaflet</code>)</h4>
+<p>C’est l’élément central de la page.</p>
+<ul>
+<li><p><strong>Interactivité :</strong> L’utilisateur peut cliquer sur un pays pour isoler ses données.</p></li>
+<li><p><strong>Fiche Pays Dynamique :</strong> Un panneau latéral (<code>uiOutput</code>) se met à jour en temps réel lors d’un clic, affichant le drapeau, la capitale, le nom du président et les principales ressources naturelles du pays (via une jointure avec un référentiel de données statiques).</p></li>
+</ul>
+</section>
+<section id="classements-et-tendances-de-pauvreté-highcharter" class="level4">
+<h4 class="anchored" data-anchor-id="classements-et-tendances-de-pauvreté-highcharter">Classements et Tendances de Pauvreté (<code>highcharter</code>)</h4>
+<ul>
+<li><strong>Top/Bottom Pays :</strong> Un graphique à barres dynamique permet de classer les pays selon l’indicateur choisi (PIB, Électricité, etc.).</li>
+<li><strong>Histogramme de Pauvreté :</strong> Visualise l’évolution de la moyenne régionale du taux de pauvreté sur 10 ans.</li>
+<li><strong>Packages utilisés :</strong> <code>highcharter</code> pour des graphiques fluides et exportables en PNG.</li>
+</ul>
+</section>
+<section id="profil-radar-et-exploration-temporelle-ggiraph" class="level4">
+<h4 class="anchored" data-anchor-id="profil-radar-et-exploration-temporelle-ggiraph">Profil Radar et Exploration Temporelle (<code>ggiraph</code>)</h4>
+<ul>
+<li><strong>Graphique Radar :</strong> Ce visuel compare le profil du pays sélectionné par rapport à la moyenne de l’Afrique de l’Ouest sur 5 dimensions (Économie, Santé, Éducation, Infrastructure, Digital). C’est un outil de <strong>benchmarking</strong> très puissant.</li>
+<li><strong>Exploration Temporelle :</strong> Un graphique en aires interactif (<code>girafe</code>) permet de survoler les points pour voir les valeurs exactes. L’utilisation du package <code>ggiraph</code> permet un effet de zoom et une interactivité supérieure au <code>ggplot</code> classique.</li>
+</ul>
+</section>
+<section id="technologies-r-mobilisées-pour-cette-page" class="level4">
+<h4 class="anchored" data-anchor-id="technologies-r-mobilisées-pour-cette-page">Technologies R mobilisées pour cette page :</h4>
+<ul>
+<li><strong>Cartographie :</strong> <code>leaflet</code>, <code>sf</code>, <code>rnaturalearth</code> (pour les fonds de carte vectoriels).</li>
+<li><strong>Visualisations :</strong> <code>highcharter</code> (moteur JavaScript Highcharts), <code>ggiraph</code> (pour le ggplot interactif).</li>
+<li><strong>Interface :</strong> <code>shinydashboard</code>, <code>shinyWidgets</code> (pour les sélecteurs de pays).</li>
+</ul>
+</section>
+</section>
+<section id="b.-démographie-demo" class="level3">
+<h3 class="anchored" data-anchor-id="b.-démographie-demo">B. Démographie (Demo)</h3>
+<p>Cette section est dédiée à l’analyse des structures de population et à la compréhension des transitions démographiques en cours en Afrique de l’Ouest.</p>
+<section id="les-indicateurs-de-synthèse-kpis" class="level4">
+<h4 class="anchored" data-anchor-id="les-indicateurs-de-synthèse-kpis">Les Indicateurs de Synthèse (KPIs)</h4>
+<p>En un coup d’œil, l’utilisateur accède aux données agrégées de sa sélection :</p>
+<ul>
+<li><p><strong>Population Totale :</strong> Affichée en millions d’habitants pour une lecture immédiate de la masse démographique.</p></li>
+<li><p><strong>Taux de Fécondité Moyen :</strong> Un indicateur crucial pour comprendre le renouvellement des générations.</p></li>
+<li><p><strong>Taux d’Urbanisation &amp; Croissance :</strong> Permettent d’évaluer la vitesse à laquelle la région se transforme.</p></li>
+</ul>
+</section>
+<section id="dynamiques-et-groupes-linguistiques-plotly-highcharter" class="level4">
+<h4 class="anchored" data-anchor-id="dynamiques-et-groupes-linguistiques-plotly-highcharter">Dynamiques et Groupes Linguistiques (<code>plotly</code> &amp; <code>highcharter</code>)</h4>
+<ul>
+<li><strong>Corrélation Fécondité vs Espérance de Vie :</strong> Ce graphique à bulles interactif (<strong>Bubble Chart</strong>) utilise <code>plotly</code>. La taille des bulles représente le poids démographique de chaque pays. Il permet d’observer si une baisse de la fécondité est liée à une hausse de l’espérance de vie, tout en colorant les pays par <strong>langue officielle</strong> pour détecter d’éventuels effets de groupe (anglophones, francophones, lusophones).</li>
+<li><strong>Poids Linguistique :</strong> Un graphique en secteurs (<strong>Pie Chart</strong>) via <code>highcharter</code> qui illustre la domination démographique de certains groupes linguistiques dans la région.</li>
+</ul>
+</section>
+<section id="analyse-temporelle-et-lollipop-chart-ggiraph" class="level4">
+<h4 class="anchored" data-anchor-id="analyse-temporelle-et-lollipop-chart-ggiraph">Analyse Temporelle et Lollipop Chart (<code>ggiraph</code>)</h4>
+<ul>
+<li><strong>Lollipop Chart de Croissance :</strong> Ce graphique remplace les barres classiques par des points reliés pour une lecture plus élégante et précise du taux de croissance annuel par pays.</li>
+<li><strong>Évolution de l’Urbanisation :</strong> Un graphique en aires (<code>geom_area_interactive</code>) montre la progression de la part de citadins. L’aspect interactif permet de suivre chaque pays individuellement tout en voyant la tendance globale.</li>
+</ul>
+</section>
+<section id="analyse-avancée-densité-et-records" class="level4">
+<h4 class="anchored" data-anchor-id="analyse-avancée-densité-et-records">Analyse Avancée : Densité et Records</h4>
+<ul>
+<li><strong>Heatmap de Corrélation (Fécondité vs Urbanisation) :</strong> C’est l’un des graphiques les plus sophistiqués de l’appli. Il utilise une <strong>estimation de densité de noyau (2D Kernel Density Estimation)</strong> pour montrer où se concentrent la majorité des pays. Il illustre visuellement la théorie de la transition démographique : l’urbanisation entraîne généralement une baisse de la fécondité.</li>
+<li><strong>Tableaux d’Honneur (Top 5) :</strong> Grâce à des <code>tabsetPanel</code> et au package <code>DT</code>, l’utilisateur peut consulter rapidement les records de la région (pays les plus peuplés, croissance la plus rapide, pays les plus urbanisés).</li>
+</ul>
+</section>
+<section id="technologies-r-mobilisées-pour-cette-page-1" class="level4">
+<h4 class="anchored" data-anchor-id="technologies-r-mobilisées-pour-cette-page-1">Technologies R mobilisées pour cette page :</h4>
+<ul>
+<li><strong>Interactivité avancée :</strong> <code>plotly</code> (pour le bubble chart), <code>ggiraph</code> (pour les graphiques interactifs et la heatmap de densité).</li>
+<li><strong>Manipulation de données :</strong> <code>dplyr</code> et <code>tidyr</code> (pivotage des données pour le radar et les tops).</li>
+<li><strong>Esthétique :</strong> <code>RColorBrewer</code> pour des palettes de couleurs harmonieuses et lisibles.</li>
+</ul>
+</section>
+</section>
+<section id="c.-économie-marchés" class="level3">
+<h3 class="anchored" data-anchor-id="c.-économie-marchés">C. Économie &amp; Marchés</h3>
+<p>Ce module offre une analyse profonde de la santé macroéconomique de l’Afrique de l’Ouest, en combinant richesse produite, dynamique de croissance et stabilité des prix.</p>
+<section id="indicateurs-de-performance-économique-kpis" class="level4">
+<h4 class="anchored" data-anchor-id="indicateurs-de-performance-économique-kpis">Indicateurs de Performance Économique (KPIs)</h4>
+<p>Le tableau de bord s’ouvre sur quatre indicateurs fondamentaux :</p>
+<ul>
+<li><p><strong>PIB Total :</strong> La taille brute de l’économie de la zone sélectionnée.</p></li>
+<li><p><strong>Croissance du PIB :</strong> Le rythme d’expansion économique.</p></li>
+<li><p><strong>Taux de Chômage :</strong> Un indicateur de l’inclusion économique.</p></li>
+<li><p><strong>Inflation Moyenne :</strong> Le niveau de stabilité des prix sur le marché.</p></li>
+</ul>
+</section>
+<section id="structure-et-poids-économique-highcharter" class="level4">
+<h4 class="anchored" data-anchor-id="structure-et-poids-économique-highcharter">Structure et Poids Économique (<code>highcharter</code>)</h4>
+<ul>
+<li><strong>Treemap du PIB :</strong> Ce graphique permet de visualiser instantanément le poids relatif de chaque pays. La taille et la couleur des carrés varient selon le PIB, mettant en évidence les “locomotives” économiques de la région.</li>
+<li><strong>Graphique Polaire du PIB/Habitant :</strong> Contrairement au PIB total, ce visuel en coordonnées polaires illustre le niveau de vie moyen. C’est un indicateur de la richesse relative des citoyens.</li>
+</ul>
+</section>
+<section id="dynamiques-temporelles-et-dualité-ggiraph" class="level4">
+<h4 class="anchored" data-anchor-id="dynamiques-temporelles-et-dualité-ggiraph">Dynamiques Temporelles et Dualité (<code>ggiraph</code>)</h4>
+<ul>
+<li><strong>Trajectoires Croissance vs Inflation :</strong> Pour chaque pays sélectionné, l’application génère des graphiques à facettes (<code>facet_wrap</code>) montrant deux courbes : la croissance réelle et l’inflation (via le déflateur du PIB).</li>
+<li><strong>Analyse :</strong> Cela permet de vérifier si la croissance économique est “mangée” par la hausse des prix ou si elle profite réellement à l’économie nationale. L’utilisation de <code>ggiraph</code> permet de comparer les années précises au survol.</li>
+</ul>
+</section>
+<section id="théorie-économique-et-diagnostic-plotly" class="level4">
+<h4 class="anchored" data-anchor-id="théorie-économique-et-diagnostic-plotly">Théorie Économique et Diagnostic (<code>plotly</code>)</h4>
+<ul>
+<li><strong>Courbe de Phillips (Inflation vs Chômage) :</strong> Un nuage de points interactif qui teste la relation historique entre ces deux variables. Il permet d’identifier les pays en situation de <strong>stagflation</strong> (faible croissance, forte inflation et chômage élevé).</li>
+<li><strong>Quadrant de Performance :</strong> Ce graphique divise l’espace en quatre zones basées sur les moyennes régionales. Le “Quadrant d’Excellence” (en haut à droite) regroupe les pays ayant une forte croissance et un faible taux de chômage. La taille des points indique le PIB global pour garder la perspective de la taille du marché.</li>
+</ul>
+</section>
+<section id="tableau-de-synthèse-et-audit-dt" class="level4">
+<h4 class="anchored" data-anchor-id="tableau-de-synthèse-et-audit-dt">Tableau de Synthèse et Audit (<code>DT</code>)</h4>
+<p>En bas de page, un <strong>Tableau de Bord Détaillé</strong> présente les chiffres bruts.</p>
+<ul>
+<li><p><strong>Formatage Conditionnel :</strong> Les taux de croissance positifs s’affichent en vert et les négatifs en rouge.</p></li>
+<li><p><strong>Fonctionnalité :</strong> L’utilisateur peut trier et filtrer les données pour effectuer son propre audit des marchés ouest-africains.</p></li>
+</ul>
+</section>
+<section id="technologies-r-mobilisées-pour-cette-page-2" class="level4">
+<h4 class="anchored" data-anchor-id="technologies-r-mobilisées-pour-cette-page-2">Technologies R mobilisées pour cette page :</h4>
+<ul>
+<li><strong>Analyses Croisées :</strong> <code>plotly</code> pour les graphiques à plusieurs dimensions (bulles, couleurs, tailles).</li>
+<li><strong>Mise en page complexe :</strong> <code>facet_wrap</code> de <code>ggplot2</code> pour les comparaisons multi-pays.</li>
+<li><strong>Reporting professionnel :</strong> <code>DT</code> pour le tableau final avec mise en forme monétaire et indicateurs de performance colorés.</li>
+</ul>
+</section>
+</section>
+<section id="d.-développement-social-social-development" class="level3">
+<h3 class="anchored" data-anchor-id="d.-développement-social-social-development">D. Développement Social (Social Development)</h3>
+<p>Ce module analyse les progrès humains de la région à travers le prisme de l’éducation, de l’inclusion des genres et de l’accès aux infrastructures de base.</p>
+<section id="connectivité-et-accès-fondamental-kpis" class="level4">
+<h4 class="anchored" data-anchor-id="connectivité-et-accès-fondamental-kpis">Connectivité et Accès Fondamental (KPIs)</h4>
+<p>Le tableau de bord social met en avant quatre piliers du développement :</p>
+<ul>
+<li><p><strong>Accès à l’Électricité :</strong> Prérequis indispensable au développement industriel et domestique.</p></li>
+<li><p><strong>Utilisateurs Internet &amp; Mobile :</strong> Mesurent le degré de digitalisation de la société.</p></li>
+<li><p><strong>Taux d’Alphabétisation :</strong> Reflet de la base éducative de la population adulte.</p></li>
+</ul>
+</section>
+<section id="éducation-et-équité-de-genre-ggiraph" class="level4">
+<h4 class="anchored" data-anchor-id="éducation-et-équité-de-genre-ggiraph">Éducation et Équité de Genre (<code>ggiraph</code>)</h4>
+<ul>
+<li><strong>Graphique “Dumbbell” de l’Écart de Genre :</strong> Ce visuel innovant compare le taux de scolarisation au secondaire des filles par rapport aux garçons.</li>
+<li><strong>Interprétation :</strong> Le segment reliant les deux points matérialise l’inégalité. Plus le segment est long, plus le fossé entre les genres est important dans le pays concerné. C’est un outil puissant pour identifier où les politiques d’inclusion doivent être renforcées.</li>
+</ul>
+</section>
+<section id="infrastructures-et-connectivité-digitale-plotly-highcharter" class="level4">
+<h4 class="anchored" data-anchor-id="infrastructures-et-connectivité-digitale-plotly-highcharter">Infrastructures et Connectivité Digitale (<code>plotly</code> &amp; <code>highcharter</code>)</h4>
+<ul>
+<li><strong>Corrélation Électricité vs Internet :</strong> Un nuage de points avec une droite de régression qui démontre mécaniquement que l’accès à l’énergie est le moteur de l’adoption digitale. La taille des points (population) permet de relativiser ces accès pour les grands pays.</li>
+<li><strong>Expansion du Parc Mobile :</strong> Un graphique en aires empilées (<strong>Stacked Area Chart</strong>) qui montre l’explosion spectaculaire du taux d’équipement mobile dans la région sur les dix dernières années.</li>
+</ul>
+</section>
+<section id="le-fossé-numérique-et-transition-éducative" class="level4">
+<h4 class="anchored" data-anchor-id="le-fossé-numérique-et-transition-éducative">Le Fossé Numérique et Transition Éducative</h4>
+<ul>
+<li><strong>Analyse du Fossé Numérique :</strong> Un graphique à barres horizontal qui calcule l’écart entre ceux qui ont l’électricité et ceux qui ont accès à Internet. Un écart réduit indique une maturité technologique avancée.</li>
+<li><strong>Matrice de Transition Éducative :</strong> Ce graphique interactif croise l’alphabétisation globale avec la scolarisation des filles. Il permet de distinguer les pays qui réussissent leur transition éducative vers le secondaire de ceux qui restent bloqués au niveau primaire.</li>
+</ul>
+</section>
+<section id="charge-de-dépendance-highcharter" class="level4">
+<h4 class="anchored" data-anchor-id="charge-de-dépendance-highcharter">Charge de Dépendance (<code>highcharter</code>)</h4>
+<ul>
+<li><strong>Ratio de Dépendance :</strong> Ce bar chart illustre le poids social porté par la population active. Un ratio élevé indique une forte proportion d’enfants ou de personnes âgées à la charge des travailleurs, ce qui pose des défis majeurs pour le financement des services sociaux et des retraites.</li>
+</ul>
+</section>
+<section id="technologies-r-mobilisées-pour-cette-page-3" class="level4">
+<h4 class="anchored" data-anchor-id="technologies-r-mobilisées-pour-cette-page-3">Technologies R mobilisées pour cette page :</h4>
+<ul>
+<li><strong>Visualisations Comparatives :</strong> <code>ggiraph</code> pour le graphique de type “Dumbbell” (haltères).</li>
+<li><strong>Corrélations Statistiques :</strong> <code>plotly</code> pour l’intégration de droites de tendance et de matrices de corrélation.</li>
+<li><strong>Séries Temporelles :</strong> <code>highcharter</code> pour l’empilement des données de téléphonie mobile.</li>
+</ul>
+</section>
+</section>
+<section id="e.-santé-pauvreté-health-poverty" class="level3">
+<h3 class="anchored" data-anchor-id="e.-santé-pauvreté-health-poverty">E. Santé &amp; Pauvreté (Health &amp; Poverty)</h3>
+<p>Cette section est dédiée à l’analyse des vulnérabilités sociales et des fragilités des systèmes de santé. Elle permet d’identifier les zones nécessitant des interventions prioritaires.</p>
+<section id="indices-de-vulnérabilité-kpis" class="level4">
+<h4 class="anchored" data-anchor-id="indices-de-vulnérabilité-kpis">Indices de Vulnérabilité (KPIs)</h4>
+<p>Trois indicateurs critiques accueillent l’utilisateur :</p>
+<ul>
+<li><p><strong>Mortalité Infantile :</strong> Nombre de décès pour 1000 naissances, un baromètre de la qualité des soins néonataux.</p></li>
+<li><p><strong>Mortalité Maternelle :</strong> Reflet de l’accès aux infrastructures de santé d’urgence. - <strong>Indice Gini Moyen :</strong> Mesure le niveau global des inégalités de revenus dans la zone sélectionnée.</p></li>
+</ul>
+</section>
+<section id="analyse-des-systèmes-de-santé-plotly" class="level4">
+<h4 class="anchored" data-anchor-id="analyse-des-systèmes-de-santé-plotly">Analyse des Systèmes de Santé (<code>plotly</code>)</h4>
+<ul>
+<li><strong>Corrélation des Mortalités :</strong> Ce graphique interactif croise la mortalité infantile (axe X) et maternelle (axe Y).</li>
+<li><strong>Diagnostic :</strong> La forte corrélation linéaire observée ici souligne que les fragilités ne sont pas isolées : un pays avec un système de santé précaire impacte simultanément les mères et les enfants. La couleur et la taille des points permettent d’identifier visuellement les pays où l’urgence est la plus marquée.</li>
+</ul>
+</section>
+<section id="inégalités-et-répartition-des-richesses-highcharter" class="level4">
+<h4 class="anchored" data-anchor-id="inégalités-et-répartition-des-richesses-highcharter">Inégalités et Répartition des Richesses (<code>highcharter</code>)</h4>
+<ul>
+<li><strong>Radar des Inégalités (Indice Gini) :</strong> Utilisant une projection polaire, ce graphique illustre la concentration des richesses. Plus le pays s’éloigne du centre, plus les inégalités sont fortes. Le choix du violet symbolise ici les enjeux de justice sociale liés à la répartition du capital.</li>
+</ul>
+</section>
+<section id="le-paradoxe-social-pauvreté-vs-inégalités-ggiraph" class="level4">
+<h4 class="anchored" data-anchor-id="le-paradoxe-social-pauvreté-vs-inégalités-ggiraph">Le Paradoxe Social : Pauvreté vs Inégalités (<code>ggiraph</code>)</h4>
+<ul>
+<li><strong>Graphique Bulle de Tension :</strong> Ce visuel innovant croise le taux de pauvreté (quantitatif) avec l’indice Gini (qualitatif/répartition).</li>
+<li><strong>Note d’Analyse :</strong> Il permet d’identifier des “paradoxes” : des pays avec une pauvreté modérée mais des inégalités explosives, ou inversement. C’est un outil précieux pour comprendre les racines des tensions sociales potentielles. La ligne de tendance permet de voir si la région suit une trajectoire commune.</li>
+</ul>
+</section>
+<section id="urgences-sociales-et-reporting-dt" class="level4">
+<h4 class="anchored" data-anchor-id="urgences-sociales-et-reporting-dt">Urgences Sociales et Reporting (<code>DT</code>)</h4>
+<ul>
+<li><strong>Tableau des Records :</strong> Un tableau de bord listant les pays par niveau d’urgence.</li>
+<li><strong>Visualisation Intégrée :</strong> La colonne “Mortalité Infantile” intègre des <strong>barres de couleur horizontales</strong> (via <code>styleColorBar</code>) directement dans les cellules. Cela permet de comparer visuellement les magnitudes de mortalité sans quitter le tableau des yeux, facilitant un audit rapide des priorités sanitaires.</li>
+</ul>
+</section>
+<section id="technologies-r-mobilisées-pour-cette-page-4" class="level4">
+<h4 class="anchored" data-anchor-id="technologies-r-mobilisées-pour-cette-page-4">Technologies R mobilisées pour cette page :</h4>
+<ul>
+<li><strong>Détection de Tendances :</strong> <code>geom_smooth</code> pour l’analyse de corrélation entre pauvreté et distribution.</li>
+<li><strong>Visualisations Circulaires :</strong> <code>highcharter</code> avec l’option <code>polar = TRUE</code> pour une lecture multidimensionnelle du Gini.</li>
+<li><strong>Data-Visualisation en Tableau :</strong> Utilisation avancée de <code>DT</code> pour transformer des chiffres bruts en indicateurs visuels immédiats (pink bar charts).</li>
+</ul>
+</section>
+</section>
+<section id="f.-indice-composite-oseao-synthetical-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="f.-indice-composite-oseao-synthetical-analysis">F. Indice Composite OSEAO (Synthetical Analysis)</h3>
+<p>Cette page représente l’aboutissement technique de l’application. Elle ne se contente pas d’afficher des données, elle les synthétise via un moteur algorithmique pour offrir un classement unique de la performance globale.</p>
+<section id="une-méthodologie-scientifique-lapproche-acp" class="level4">
+<h4 class="anchored" data-anchor-id="une-méthodologie-scientifique-lapproche-acp">1. Une Méthodologie Scientifique : L’Approche ACP</h4>
+<p>L’établissement de l’Indice OSEAO repose sur l’<strong>Analyse en Composantes Principales (ACP)</strong>, une méthode de Machine Learning non supervisé.</p>
+<ul>
+<li><strong>Pourquoi la solidité ?</strong> Contrairement à un simple calcul de moyenne où chaque variable recevrait un poids arbitraire (ex: 20% pour chaque domaine), l’ACP “écoute” les données. Elle identifie les variables qui expliquent le plus la variance (les différences réelles) entre les pays.</li>
+<li><strong>La Pertinence :</strong> Si, pour une année donnée, l’accès à l’électricité est le facteur qui différencie le plus les pays performants des autres, l’algorithme lui attribuera automatiquement un poids plus élevé. Cela garantit une objectivité mathématique totale.</li>
+<li><strong>Variables du Modèle :</strong> Le score intègre 7 dimensions critiques : la richesse (log du PIB), l’infrastructure (électricité/internet), le capital humain (alphabétisation/santé), l’urbanisation et la survie infantile (mortalité inversée).</li>
+</ul>
+</section>
+<section id="audit-des-poids-et-contributions-highcharter" class="level4">
+<h4 class="anchored" data-anchor-id="audit-des-poids-et-contributions-highcharter">2. Audit des Poids et Contributions (<code>highcharter</code>)</h4>
+<p>Le graphique <strong>“Audit des Poids”</strong> permet d’ouvrir la “boîte noire” de l’algorithme.</p>
+<p><strong>Fonction :</strong> Il montre en temps réel le pourcentage d’influence de chaque variable sur le score final pour l’année sélectionnée.</p>
+<p><strong>Utilité :</strong> Cela permet au décideur de comprendre <em>pourquoi</em> un pays est leader. Est-ce grâce à sa richesse économique ou à ses avancées sociales ?</p>
+</section>
+<section id="classement-de-performance-globale" class="level4">
+<h4 class="anchored" data-anchor-id="classement-de-performance-globale">3. Classement de Performance Globale</h4>
+<p>Le <strong>Bar Chart de Classement</strong> présente les résultats finaux normalisés sur une échelle de <strong>0 à 100</strong>.</p>
+<p><strong>Normalisation :</strong> Le score 100 est attribué au pays le plus performant de la sélection, créant ainsi un “étalon-or” régional qui sert de référence aux autres.</p>
+</section>
+<section id="profilage-détaillé-par-pays-radar-chart" class="level4">
+<h4 class="anchored" data-anchor-id="profilage-détaillé-par-pays-radar-chart">4. Profilage Détaillé par Pays (Radar Chart)</h4>
+<p>Grâce au <strong>Radar Chart (graphique en toile d’araignée)</strong>, l’utilisateur peut isoler un pays pour voir son “empreinte” de développement.</p>
+<p><strong>Diagnostic :</strong> On peut immédiatement voir si un pays a un profil équilibré ou s’il présente des “hyper-performances” (ex: forte économie) compensées par des “zones de fragilité” (ex: faiblesse infrastructurelle).</p>
+</section>
+<section id="matrice-de-performance-comparative-heatmap" class="level4">
+<h4 class="anchored" data-anchor-id="matrice-de-performance-comparative-heatmap">5. Matrice de Performance Comparative (Heatmap)</h4>
+<p>La <strong>Heatmap</strong> finale offre une vision transversale de tous les pays sur tous les piliers (Éco, Soc, Infra, Santé, Urb). <strong>Lecture Rapide :</strong> En une seconde, les zones de couleurs sombres identifient les succès, tandis que les zones claires signalent les retards structurels. C’est l’outil ultime pour le benchmarking entre pays voisins.</p>
+</section>
+<section id="technologies-r-mobilisées-pour-cette-page-5" class="level4">
+<h4 class="anchored" data-anchor-id="technologies-r-mobilisées-pour-cette-page-5">Technologies R mobilisées pour cette page :</h4>
+<ul>
+<li><strong>Moteur Statistique :</strong> Package <code>FactoMineR</code> pour l’exécution de l’Analyse en Composantes Principales.</li>
+<li><strong>Algorithmique :</strong> Fonctions personnalisées de normalisation et de gestion des données manquantes.</li>
+<li><strong>Visualisation Multidimensionnelle :</strong> <code>highcharter</code> pour les rendus Radar, Heatmap et Barres avec dégradés de couleurs (palettes <code>magma</code> et <code>inferno</code>).</li>
+</ul>
+</section>
+</section>
+<section id="g.-prédictions-machine-learning-forecasting" class="level3">
+<h3 class="anchored" data-anchor-id="g.-prédictions-machine-learning-forecasting">G. Prédictions &amp; Machine Learning (Forecasting)</h3>
+<p>Cette page est le laboratoire prospectif de l’application. Elle combine la puissance de la régression statistique et du clustering pour transformer les données historiques en outils d’aide à la décision pour l’horizon 2030.</p>
+<section id="moteur-de-projection-forecasting-engine" class="level4">
+<h4 class="anchored" data-anchor-id="moteur-de-projection-forecasting-engine">1. Moteur de Projection (Forecasting Engine)</h4>
+<p>L’application intègre un moteur de <strong>Régression Linéaire dynamique</strong>. - <strong>Ce que fait la page :</strong> Pour chaque pays et indicateur sélectionné (Économie, Santé, Infrastructure, ou même l’Indice OSEAO), l’algorithme analyse la tendance des 10 dernières années. - <strong>Solidité :</strong> Le modèle calcule une trajectoire de croissance et la projette jusqu’en 2030. Les graphiques distinguent clairement l’<strong>Historique</strong> (traits pleins) de la <strong>Projection</strong> (pointillés), permettant de visualiser si un pays est sur une pente ascendante, descendante ou stagnante.</p>
+</section>
+<section id="classement-futur-ranking-2025-2030" class="level4">
+<h4 class="anchored" data-anchor-id="classement-futur-ranking-2025-2030">2. Classement Futur (Ranking 2025-2030)</h4>
+<p>Un sélecteur d’année cible permet de “voyager dans le temps”. - <strong>L’utilité :</strong> En choisissant 2030, l’utilisateur peut voir quel serait le classement des pays si les tendances actuelles se maintiennent. C’est un outil de simulation crucial pour évaluer l’efficacité des politiques de développement à long terme.</p>
+</section>
+<section id="segmentation-par-ia-le-clustering-hiérarchique" class="level4">
+<h4 class="anchored" data-anchor-id="segmentation-par-ia-le-clustering-hiérarchique">3. Segmentation par IA : Le Clustering Hiérarchique</h4>
+<p>C’est ici que l’Intelligence Artificielle intervient pour organiser la complexité régionale. - <strong>L’Algorithme :</strong> Nous utilisons un <strong>Clustering Hiérarchique (méthode de Ward)</strong> avec optimisation automatique de la silhouette.</p>
+<ul>
+<li><strong>Ce qu’il fait réellement :</strong> L’IA regroupe les pays non pas par zone géographique, mais par <strong>profil de développement</strong>. Elle croise deux dimensions :</li>
+</ul>
+<ol type="1">
+<li><p><strong>Le Niveau Actuel :</strong> Où se situe le pays aujourd’hui ?</p></li>
+<li><p><strong>La Vitesse de Progression :</strong> À quelle vitesse évolue-t-il ?</p></li>
+</ol>
+<ul>
+<li><strong>Interprétation :</strong> Les pays d’une même couleur partagent des défis et des opportunités identiques. Par exemple, un groupe pourrait réunir les “Champions Emergents” (Niveau moyen mais forte croissance) tandis qu’un autre identifierait les “Leaders Stables”.</li>
+</ul>
+</section>
+<section id="analyse-des-écarts-de-genre-projections-sociales" class="level4">
+<h4 class="anchored" data-anchor-id="analyse-des-écarts-de-genre-projections-sociales">4. Analyse des Écarts de Genre (Projections Sociales)</h4>
+<p>Un focus particulier est mis sur l’<strong>Écart de Genre dans le secondaire</strong>.</p>
+<ul>
+<li><p><strong>Calcul :</strong> Le modèle projette la différence entre le taux de scolarisation des garçons et des filles.</p></li>
+<li><p><strong>Objectif :</strong> Identifier à quelle date (2026, 2028, 2030 ?) un pays peut espérer atteindre la parité (un score proche de 0), offrant ainsi une mesure concrète de l’évolution de l’équité sociale.</p></li>
+</ul>
+</section>
+<section id="technologies-r-mobilisées-pour-cette-page-6" class="level4">
+<h4 class="anchored" data-anchor-id="technologies-r-mobilisées-pour-cette-page-6">Technologies R mobilisées pour cette page :</h4>
+<ul>
+<li><strong>Modélisation Statistique :</strong> Utilisation des fonctions <code>lm()</code> pour les régressions et <code>predict()</code> pour les extrapolations temporelles.</li>
+<li><strong>Algorithmes d’Apprentissage :</strong> <code>hclust</code> et <code>silhouette</code> (package <code>cluster</code>) pour la segmentation automatique sans biais humain.</li>
+<li><strong>Visualisation Interactive :</strong> <code>highcharter</code> pour les séries temporelles duales et <code>plotly</code> pour l’analyse spatiale des clusters.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Le projet <strong>OSEAO</strong> démontre que la Data Science est un levier de gouvernance incontournable pour l’Afrique de l’Ouest. Ce rapport et l’application associée ont permis de transformer des données complexes en une vision stratégique claire.</p>
+<section id="enseignements-clés-du-projet" class="level3">
+<h3 class="anchored" data-anchor-id="enseignements-clés-du-projet">Enseignements Clés du Projet</h3>
+<ul>
+<li><strong>Indice de Performance Réelle :</strong> Grâce à l’Analyse en Composantes Principales (ACP), nous avons établi un classement objectif qui valorise l’équilibre entre croissance économique et progrès humain.</li>
+<li><strong>Interdépendance des Secteurs :</strong> Les corrélations identifiées prouvent que l’investissement dans l’infrastructure (électricité) est le moteur direct de l’inclusion numérique et de l’éducation.</li>
+<li><strong>Anticipation 2030 :</strong> Le module de Machine Learning permet de passer d’une gestion réactive à une planification proactive, en identifiant les trajectoires de développement futures des pays de la sous-région.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Note finale :</strong> Ce dashboard constitue une “boussole” numérique pour les décideurs, permettant d’orienter les ressources là où l’impact social et économique sera le plus fort.</p>
+</blockquote>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
