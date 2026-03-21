@@ -1,0 +1,4 @@
+[1,"==> quarto preview README.qmd --to html --no-watch-inputs --no-browse\n\n"]
+[1,"pandoc \n  to: html\n  output-file: README.html\n  standalone: true\n  section-divs: true\n  html-math-method: mathjax\n  wrap: none\n  default-image-extension: png\n  toc: true\n  variables: {}\n  \nmetadata\n  document-css: false\n  link-citations: true\n  date-format: long\n  lang: en\n  title: Observatoire Socio-Économique de l'Afrique de l'Ouest (OSEAO)\n  subtitle: Projet Visualisation de Données - M1 MAS (Science des Données et IA)\n  author:\n    - SANOU Bakaye Boubacar Hafiz\n    - SECK Ndeye Fama\n    - BOUH Fall\n  date: '2026-03-15'\n  theme: cosmo\n  \n"]
+[1,"Output created: README.html\n\nWatching files for changes\n"]
+[1,"Browse at http://localhost:5591/\n"]
